@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import "./App.css";
+import { messaging, getToken } from "./firebase";
 
 function App() {
   const [task, setTask] = useState("");
@@ -8,23 +9,54 @@ function App() {
   const [darkMode, setDarkMode] = useState(false);
   const inputRef = useRef(null);
 
+  // -------------------------------
+  // Firebase Push Notifications
+  // -------------------------------
+  useEffect(() => {
+    const requestPermission = async () => {
+      const permission = await Notification.requestPermission();
+      if (permission === "granted") {
+        const token = await getToken(messaging, {
+          vapidKey:
+            "BFYcdMhlfBRhSnVu7GKdtdGdpaAOWLUG85QS4CW63DFXvcW1e3c0xlVR-_IqVxTVhzlc-t8n6i6wlXiu7D3kCE",
+        });
+        console.log("FCM Token:", token);
+        // Save this token if you want to send notifications from Firebase Console
+      } else {
+        console.log("Notification permission denied");
+      }
+    };
+
+    requestPermission();
+  }, []);
+
+  // -------------------------------
   // Load todos
+  // -------------------------------
   useEffect(() => {
     const s = JSON.parse(localStorage.getItem("todos"));
     if (s) setTodos(s);
   }, []);
 
+  // -------------------------------
   // Save todos
+  // -------------------------------
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
+  // -------------------------------
+  // Focus input when editing
+  // -------------------------------
   useEffect(() => {
     if (editingIndex !== null) {
       inputRef.current?.focus();
     }
   }, [editingIndex]);
 
+  // -------------------------------
+  // Todo handlers
+  // -------------------------------
   function handleAddOrUpdate() {
     const text = task.trim();
     if (!text) return;
@@ -37,11 +69,44 @@ function App() {
       });
       setEditingIndex(null);
     } else {
-      setTodos((prev) => [
-        ...prev,
-        { text, done: false, date: new Date().toLocaleString() },
-      ]);
+      const reminder = prompt(
+        "Enter reminder time in HH:MM (24h format), leave blank for no reminder"
+      );
+
+      const newTodo = {
+        text,
+        done: false,
+        date: new Date().toLocaleString(),
+        reminder: reminder || null,
+      };
+
+      setTodos((prev) => [...prev, newTodo]);
+
+      // Schedule local notification (works if PWA is open)
+      if (reminder && "Notification" in window && Notification.permission === "granted") {
+        const [hours, minutes] = reminder.split(":").map(Number);
+        const now = new Date();
+        const reminderTime = new Date(
+          now.getFullYear(),
+          now.getMonth(),
+          now.getDate(),
+          hours,
+          minutes,
+          0
+        );
+
+        let delay = reminderTime.getTime() - now.getTime();
+        if (delay < 0) delay += 24 * 60 * 60 * 1000; // schedule for next day if time passed
+
+        setTimeout(() => {
+          new Notification("Todo Reminder", {
+            body: `⏰ ${text}`,
+            icon: "/logo192.png",
+          });
+        }, delay);
+      }
     }
+
     setTask("");
   }
 
@@ -92,11 +157,14 @@ function App() {
 
   const remaining = todos.filter((t) => !t.done).length;
 
+  // -------------------------------
+  // Render
+  // -------------------------------
   return (
     <div className={`container ${darkMode ? "dark" : ""}`}>
       <h1>Todo App</h1>
 
-      {/* Dark Mode toggle right under the title */}
+      {/* Dark Mode toggle */}
       <button
         onClick={() => setDarkMode(!darkMode)}
         className="toggle"
@@ -105,6 +173,7 @@ function App() {
         {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
       </button>
 
+      {/* Input group */}
       <div className="input-group">
         <input
           ref={inputRef}
@@ -124,6 +193,7 @@ function App() {
         )}
       </div>
 
+      {/* Todo list */}
       <ul>
         {todos.map((todo, index) => (
           <li key={index}>
@@ -134,6 +204,12 @@ function App() {
               {todo.text}
               <br />
               <small style={{ color: "#888" }}>{todo.date}</small>
+              {todo.reminder && (
+                <>
+                  <br />
+                  <small style={{ color: "#555" }}>⏰ Reminder: {todo.reminder}</small>
+                </>
+              )}
             </span>
             <div className="actions">
               <button className="edit" onClick={() => handleEdit(index)}>
@@ -147,6 +223,7 @@ function App() {
         ))}
       </ul>
 
+      {/* Footer */}
       {todos.length > 0 && (
         <div className="footer">
           <p>
