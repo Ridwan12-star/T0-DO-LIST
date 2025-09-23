@@ -17,8 +17,7 @@ function App() {
       const permission = await Notification.requestPermission();
       if (permission === "granted") {
         const token = await getToken(messaging, {
-          vapidKey:
-            "BFYcdMhlfBRhSnVu7GKdtdGdpaAOWLUG85QS4CW63DFXvcW1e3c0xlVR-_IqVxTVhzlc-t8n6i6wlXiu7D3kCE",
+          vapidKey: "BFYcdMhlfBRhSnVu7GKdtdGdpaAOWLUG85QS4CW63DFXvcW1e3c0xlVR-_IqVxTVhzlc-t8n6i6wlXiu7D3kCE"
         });
         console.log("FCM Token:", token);
         // Save this token if you want to send notifications from Firebase Console
@@ -69,44 +68,11 @@ function App() {
       });
       setEditingIndex(null);
     } else {
-      const reminder = prompt(
-        "Enter reminder time in HH:MM (24h format), leave blank for no reminder"
-      );
-
-      const newTodo = {
-        text,
-        done: false,
-        date: new Date().toLocaleString(),
-        reminder: reminder || null,
-      };
-
-      setTodos((prev) => [...prev, newTodo]);
-
-      // Schedule local notification (works if PWA is open)
-      if (reminder && "Notification" in window && Notification.permission === "granted") {
-        const [hours, minutes] = reminder.split(":").map(Number);
-        const now = new Date();
-        const reminderTime = new Date(
-          now.getFullYear(),
-          now.getMonth(),
-          now.getDate(),
-          hours,
-          minutes,
-          0
-        );
-
-        let delay = reminderTime.getTime() - now.getTime();
-        if (delay < 0) delay += 24 * 60 * 60 * 1000; // schedule for next day if time passed
-
-        setTimeout(() => {
-          new Notification("Todo Reminder", {
-            body: `⏰ ${text}`,
-            icon: "/logo192.png",
-          });
-        }, delay);
-      }
+      setTodos((prev) => [
+        ...prev,
+        { text, done: false, date: new Date().toLocaleString() },
+      ]);
     }
-
     setTask("");
   }
 
@@ -204,12 +170,6 @@ function App() {
               {todo.text}
               <br />
               <small style={{ color: "#888" }}>{todo.date}</small>
-              {todo.reminder && (
-                <>
-                  <br />
-                  <small style={{ color: "#555" }}>⏰ Reminder: {todo.reminder}</small>
-                </>
-              )}
             </span>
             <div className="actions">
               <button className="edit" onClick={() => handleEdit(index)}>
