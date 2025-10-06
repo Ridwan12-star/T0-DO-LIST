@@ -18,14 +18,13 @@ body {
 .container {
   background: white;
   padding: 30px 25px;
-  border-radius: 0; /* full screen look */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  width: 90%; /* full width */
-  max-width: 100%;
+  border-radius: 14px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  width: 90%;
+  max-width: 600px;
   transition: background 0.3s, color 0.3s;
   box-sizing: border-box;
-  margin: 0;
-  min-height: 100vh;
+  margin: 40px auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -219,21 +218,12 @@ li span.done {
 
 /* 📱 Mobile responsiveness */
 @media (max-width: 768px) {
-  body {
-    align-items: stretch;
-  }
-
   .container {
-    padding: 20px 16px;
-    border-radius: 0;
-    box-shadow: none;
-    width: 100%;
-    max-width: 100%;
-    min-height: 100vh;
-  }
-
-  h1 {
-    font-size: 24px;
+    width: 92%;
+    max-width: none;
+    margin: 20px auto;
+    padding: 24px 18px;
+    border-radius: 12px;
   }
 
   .input-group {
