@@ -14,11 +14,11 @@ body {
 /* Main container */
 .container {
   background: white;
-  padding: 20px 30px;
-  border-radius: 10px;
+  padding: 25px 35px;
+  border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 90%;
-  max-width: 400px; /* scales on desktop, flexes on mobile */
+  width: 95%;
+  max-width: 480px; /* more room on desktop */
   transition: background 0.3s, color 0.3s;
   box-sizing: border-box;
 }
@@ -47,19 +47,21 @@ body {
 /* Title */
 h1 {
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   color: inherit;
+  font-size: 26px;
+  font-weight: bold;
 }
 
 /* Toggle button */
 .toggle-mode {
   width: 100%;
-  margin-bottom: 15px;
-  padding: 10px;
-  border-radius: 6px;
+  margin-bottom: 20px;
+  padding: 12px;
+  border-radius: 8px;
   border: none;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 16px;
   background: #444;
   color: white;
   transition: background 0.3s;
@@ -72,24 +74,24 @@ h1 {
 /* Input + buttons */
 .input-group {
   display: flex;
-  gap: 8px;
-  margin-bottom: 15px;
+  gap: 10px;
+  margin-bottom: 18px;
 }
 
 input {
   flex: 1;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 16px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 17px;
   box-sizing: border-box;
 }
 
 button {
-  padding: 10px 15px;
+  padding: 12px 18px;
   border: none;
-  border-radius: 6px;
-  font-size: 14px;
+  border-radius: 8px;
+  font-size: 15px;
   cursor: pointer;
   color: white;
   transition: background 0.3s, transform 0.1s;
@@ -126,10 +128,11 @@ li {
   align-items: center;
   background: #fafafa;
   margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 6px;
+  padding: 12px;
+  border-radius: 8px;
   border: 1px solid #eee;
   transition: background 0.3s, color 0.3s;
+  font-size: 16px;
 }
 
 /* Todo text */
@@ -165,7 +168,7 @@ li span.done {
 
 /* Date display under tasks */
 .date {
-  font-size: 12px;
+  font-size: 13px;
   color: #666;
   margin-top: 4px;
 }
@@ -177,12 +180,12 @@ li span.done {
 /* Clear completed button */
 .clear-completed {
   width: 100%;
-  margin-top: 10px;
-  padding: 10px;
-  border-radius: 6px;
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 8px;
   border: none;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 16px;
   background: #ff9800;
   color: white;
 }
@@ -197,40 +200,33 @@ li span.done {
 }
 
 .footer {
-  margin-top: 15px;
+  margin-top: 18px;
   padding: 10px;
   text-align: center;
   border-top: 1px solid #ddd;
   color: #333;
-  font-size: 14px;
-}
-
-.clear {
-  background-color: #ff9800;
-  margin-top: 8px;
-}
-.clear:hover {
-  background-color: #e68900;
+  font-size: 15px;
 }
 
 /* 📱 Mobile responsiveness */
 @media (max-width: 600px) {
   body {
-    padding-top: 20px;
+    padding-top: 25px;
     align-items: center;
   }
 
   .container {
-    width: 95%;
-    padding: 15px 20px;
+    width: 90%;
+    padding: 20px;
   }
 
   h1 {
-    font-size: 22px;
+    font-size: 24px;
   }
 
   .input-group {
     flex-direction: column;
+    gap: 10px;
   }
 
   .input-group input,
@@ -241,16 +237,17 @@ li span.done {
   li {
     flex-direction: column;
     align-items: flex-start;
-    gap: 6px;
+    gap: 8px;
+    font-size: 17px;
   }
 
   .actions {
     align-self: flex-end;
-    gap: 8px;
+    gap: 10px;
   }
 
   button {
-    font-size: 15px;
-    padding: 12px;
+    font-size: 16px;
+    padding: 13px;
   }
 }
