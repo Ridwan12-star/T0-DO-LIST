@@ -8,19 +8,15 @@ body {
   padding-top: 50px;
   margin: 0;
   transition: background 0.3s;
-  box-sizing: border-box;
 }
 
-/* Main container */
 .container {
   background: white;
-  padding: 25px 35px;
-  border-radius: 12px;
+  padding: 20px 30px;
+  border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 95%;
-  max-width: 480px; /* more room on desktop */
+  width: 400px;
   transition: background 0.3s, color 0.3s;
-  box-sizing: border-box;
 }
 
 /* 🌙 Dark mode styles */
@@ -47,26 +43,22 @@ body {
 /* Title */
 h1 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   color: inherit;
-  font-size: 26px;
-  font-weight: bold;
 }
 
 /* Toggle button */
 .toggle-mode {
   width: 100%;
-  margin-bottom: 20px;
-  padding: 12px;
-  border-radius: 8px;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 6px;
   border: none;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 15px;
   background: #444;
   color: white;
-  transition: background 0.3s;
 }
-
 .toggle-mode:hover {
   background: #666;
 }
@@ -74,31 +66,25 @@ h1 {
 /* Input + buttons */
 .input-group {
   display: flex;
-  gap: 10px;
-  margin-bottom: 18px;
+  gap: 8px;
+  margin-bottom: 15px;
 }
 
 input {
   flex: 1;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 17px;
-  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
 }
 
 button {
-  padding: 12px 18px;
+  padding: 10px 15px;
   border: none;
-  border-radius: 8px;
-  font-size: 15px;
+  border-radius: 6px;
+  font-size: 14px;
   cursor: pointer;
   color: white;
-  transition: background 0.3s, transform 0.1s;
-}
-
-button:hover {
-  transform: scale(1.03);
 }
 
 .input-group button {
@@ -128,11 +114,10 @@ li {
   align-items: center;
   background: #fafafa;
   margin-bottom: 10px;
-  padding: 12px;
-  border-radius: 8px;
+  padding: 10px;
+  border-radius: 6px;
   border: 1px solid #eee;
   transition: background 0.3s, color 0.3s;
-  font-size: 16px;
 }
 
 /* Todo text */
@@ -168,7 +153,7 @@ li span.done {
 
 /* Date display under tasks */
 .date {
-  font-size: 13px;
+  font-size: 12px;
   color: #666;
   margin-top: 4px;
 }
@@ -180,12 +165,12 @@ li span.done {
 /* Clear completed button */
 .clear-completed {
   width: 100%;
-  margin-top: 15px;
-  padding: 12px;
-  border-radius: 8px;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 6px;
   border: none;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 15px;
   background: #ff9800;
   color: white;
 }
@@ -200,54 +185,18 @@ li span.done {
 }
 
 .footer {
-  margin-top: 18px;
+  margin-top: 15px;
   padding: 10px;
   text-align: center;
   border-top: 1px solid #ddd;
   color: #333;
-  font-size: 15px;
+  font-size: 14px;
 }
 
-/* 📱 Mobile responsiveness */
-@media (max-width: 600px) {
-  body {
-    padding-top: 25px;
-    align-items: center;
-  }
-
-  .container {
-    width: 90%;
-    padding: 20px;
-  }
-
-  h1 {
-    font-size: 24px;
-  }
-
-  .input-group {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .input-group input,
-  .input-group button {
-    width: 100%;
-  }
-
-  li {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-    font-size: 17px;
-  }
-
-  .actions {
-    align-self: flex-end;
-    gap: 10px;
-  }
-
-  button {
-    font-size: 16px;
-    padding: 13px;
-  }
+.clear {
+  background-color: #ff9800;
+  margin-top: 8px;
+}
+.clear:hover {
+  background-color: #e68900;
 }
