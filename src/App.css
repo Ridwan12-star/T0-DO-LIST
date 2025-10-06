@@ -17,14 +17,18 @@ body {
 /* Main container */
 .container {
   background: white;
-  padding: 25px 35px;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 480px;
+  padding: 30px 25px;
+  border-radius: 0; /* full screen look */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  width: 100%; /* full width */
+  max-width: 100%;
   transition: background 0.3s, color 0.3s;
   box-sizing: border-box;
-  margin: 0 auto;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 /* 🌙 Dark mode styles */
@@ -51,9 +55,9 @@ body {
 /* Title */
 h1 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   color: inherit;
-  font-size: 26px;
+  font-size: 28px;
   font-weight: bold;
 }
 
@@ -61,11 +65,11 @@ h1 {
 .toggle-mode {
   width: 100%;
   margin-bottom: 20px;
-  padding: 12px;
-  border-radius: 8px;
+  padding: 14px;
+  border-radius: 10px;
   border: none;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 17px;
   background: #444;
   color: white;
   transition: background 0.3s;
@@ -79,23 +83,23 @@ h1 {
 .input-group {
   display: flex;
   gap: 10px;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
 input {
   flex: 1;
-  padding: 12px;
+  padding: 14px;
   border: 1px solid #ccc;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 17px;
   box-sizing: border-box;
 }
 
 button {
-  padding: 12px 18px;
+  padding: 14px 18px;
   border: none;
-  border-radius: 8px;
-  font-size: 15px;
+  border-radius: 10px;
+  font-size: 16px;
   cursor: pointer;
   color: white;
   transition: background 0.3s, transform 0.1s;
@@ -131,12 +135,12 @@ li {
   justify-content: space-between;
   align-items: center;
   background: #fafafa;
-  margin-bottom: 10px;
-  padding: 12px;
-  border-radius: 8px;
+  margin-bottom: 12px;
+  padding: 14px;
+  border-radius: 10px;
   border: 1px solid #eee;
   transition: background 0.3s, color 0.3s;
-  font-size: 16px;
+  font-size: 17px;
 }
 
 /* Todo text */
@@ -184,12 +188,12 @@ li span.done {
 /* Clear completed button */
 .clear-completed {
   width: 100%;
-  margin-top: 15px;
-  padding: 12px;
-  border-radius: 8px;
+  margin-top: 18px;
+  padding: 14px;
+  border-radius: 10px;
   border: none;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 17px;
   background: #ff9800;
   color: white;
 }
@@ -203,29 +207,29 @@ li span.done {
   color: black;
 }
 
+/* Footer */
 .footer {
-  margin-top: 18px;
-  padding: 10px;
+  margin-top: auto;
+  padding: 15px;
   text-align: center;
   border-top: 1px solid #ddd;
   color: #333;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 /* 📱 Mobile responsiveness */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   body {
-    padding-top: 0;
     align-items: stretch;
   }
 
   .container {
-    width: 100%;
-    max-width: none;
-    padding: 20px;
-    border-radius: 0; /* full-screen look */
+    padding: 20px 16px;
+    border-radius: 0;
     box-shadow: none;
-    height: 100vh;
+    width: 100%;
+    max-width: 100%;
+    min-height: 100vh;
   }
 
   h1 {
@@ -234,7 +238,7 @@ li span.done {
 
   .input-group {
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
   }
 
   .input-group input,
@@ -245,7 +249,7 @@ li span.done {
   li {
     flex-direction: column;
     align-items: flex-start;
-    gap: 8px;
+    gap: 10px;
     font-size: 17px;
   }
 
@@ -256,6 +260,6 @@ li span.done {
 
   button {
     font-size: 16px;
-    padding: 13px;
+    padding: 14px;
   }
 }
