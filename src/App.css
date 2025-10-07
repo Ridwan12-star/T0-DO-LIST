@@ -226,7 +226,7 @@ li span.done {
 
 .container.dark .footer,
 .container.dark .task-status {
-  color: #fff !important;
+  color: #fff ;
 }
 /* === Responsive (Mobile) === */
 /* === Responsive (Mobile) === */
