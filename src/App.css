@@ -18,12 +18,11 @@ body {
   padding: 30px 25px;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  width: 100%;
+  width: 95%;
   max-width: 550px;
   margin: 40px auto;
   transition: background 0.3s, color 0.3s;
   box-sizing: border-box;
-  
 }
 
 /* === Title === */
@@ -109,14 +108,6 @@ ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
-}
-ul:empty::before {
-  content: "No tasks yet — add one!";
-  display: block;
-  text-align: center;
-  color: #999;
-  padding: 20px 0;
-  font-style: italic;
 }
 
 /* === Each Todo Item === */
@@ -213,6 +204,9 @@ li span.done {
   background: #ffb74d;
   color: #000;
 }
+.container.dark .footer {
+  color: #fff;
+}
 
 /* === Footer === */
 .footer {
@@ -224,25 +218,11 @@ li span.done {
   font-size: 15px;
 }
 
-.container.dark .footer,
-.container.dark .task-status {
-  color: #fff ;
-}
-/* === Responsive (Mobile) === */
 /* === Responsive (Mobile) === */
 @media (max-width: 768px) {
-  body {
-    align-items: stretch; /* make container fill full height */
-  }
-
   .container {
-    width: 100%;
-    max-width: 100%;
-    height: 100vh;
-    margin: 0;
-    border-radius: 0;
-    box-shadow: none;
-    padding: 25px 15px;
+    width: 94%;
+    padding: 25px 18px;
   }
 
   h1 {
@@ -250,28 +230,19 @@ li span.done {
   }
 
   .input-group {
-    flex-direction: row;
-    gap: 8px;
-    width: 100%;
-  }
-
-  input {
-    flex: 1;
-    width: 100%;
+    flex-direction: column;
   }
 
   .input-group button {
-    width: auto;
+    width: 100%;
   }
 
   li {
     flex-direction: row;
     align-items: center;
-    padding: 10px 12px;
   }
 
   .actions {
     gap: 6px;
   }
 }
-
