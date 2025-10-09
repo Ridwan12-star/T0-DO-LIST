@@ -18,7 +18,7 @@ body {
   padding: 30px 25px;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  width: 95%;
+  width: 105%;
   max-width: 550px;
   margin: 40px auto;
   transition: background 0.3s, color 0.3s;
@@ -229,13 +229,20 @@ li span.done {
     font-size: 28px;
   }
 
-  .input-group {
-    flex-direction: column;
+   .input-group {
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .input-group input {
+    flex: 1;
   }
 
   .input-group button {
-    width: 100%;
+    width: auto;
   }
+}
+  
 
   li {
     flex-direction: row;
